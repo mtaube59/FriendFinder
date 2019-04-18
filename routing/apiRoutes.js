@@ -16,8 +16,8 @@ module.exports = function(app) {
         for (var k = 0; k < newUser.length;k++){
             newUserSum = newUserSum + parseInt(newUser[k])
         }
-        var minMatch = 100
-        var lowestPerson
+        var minMatch = 100;
+        var lowestPerson; 
         for (var i =0; i < friends.length; i++) {
             sum = 0
             for (var j = 0; j < friends[i].scores.length; j++){
@@ -27,12 +27,14 @@ module.exports = function(app) {
             if (Math.abs(sum - newUserSum) < minMatch){
                 minMatch = Math.abs(sum - newUserSum);
                 console.log(minMatch);
+                lowestPerson = i;
+                // console.log("this is the lowest person at index = " + lowestPerson);
             }
             console.log(sum);
         }
-        
-        friends.push(req.body)
-        res.json(friends)
+        console.log("this is the lowest person at index = " + lowestPerson);
+        friends.push(req.body);
+        res.json(friends[lowestPerson]);
 
     })
 
