@@ -11,6 +11,9 @@ module.exports = function(app) {
     app.post("/api/friends", function(req,res){
         //grab user sent over, then compare that user's scores with those of the ones already contained in the array. Once that is done the user is matched with the person with the lowest score.
         var newUser = req.body.scores;
+        for (var i = 0; i < newUser.length; i++){
+            newUser[i] = parseInt(newUser[i])
+        }
         var sum = 0;
         var newUserSum = 0;
         for (var k = 0; k < newUser.length;k++){
